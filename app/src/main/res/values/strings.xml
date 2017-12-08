@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">FireBaseMessage</string>
+    <string name="action_delete">Supprimer données</string>
+</resources>
