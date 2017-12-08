@@ -10,7 +10,10 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Display chat messages
@@ -71,10 +74,14 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
             // Avatar dans la mImageView
             Glide.with(mImageView.getContext()).load(Constant.GRAVATAR_PREFIX + Utils.md5(message.userMail)).apply( RequestOptions.circleCropTransform()).into(mImageView);
 
+            long timeStamp = message.timestamp;
+            SimpleDateFormat formater = new SimpleDateFormat( "dd/MM '-' HH:mm" );
+            Date date = new Date(timeStamp);
+
             String ts = message.timestamp.toString();
 
             // on affiche le contenu textuel du message
-            mContentTextView.setText(ts + " : " + message.content);
+            mContentTextView.setText(formater.format(date) + " : " + message.content);
         }
     }
 }
