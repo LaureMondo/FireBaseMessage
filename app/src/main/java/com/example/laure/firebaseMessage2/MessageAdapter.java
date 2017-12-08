@@ -13,7 +13,6 @@ import com.bumptech.glide.request.RequestOptions;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 /**
  * Display chat messages
@@ -74,11 +73,9 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
             // Avatar dans la mImageView
             Glide.with(mImageView.getContext()).load(Constant.GRAVATAR_PREFIX + Utils.md5(message.userMail)).apply( RequestOptions.circleCropTransform()).into(mImageView);
 
-            long timeStamp = message.timestamp;
+            // formate le timestamp du message en vraie date
             SimpleDateFormat formater = new SimpleDateFormat( "dd/MM '-' HH:mm" );
-            Date date = new Date(timeStamp);
-
-            String ts = message.timestamp.toString();
+            Date date = new Date(message.timestamp);
 
             // on affiche le contenu textuel du message
             mContentTextView.setText(formater.format(date) + " : " + message.content);

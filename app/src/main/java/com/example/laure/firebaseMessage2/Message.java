@@ -1,11 +1,5 @@
 package com.example.laure.firebaseMessage2;
 
-/**
- * Represent a single message sended by an user
- *
- * Created by Hugo Gresse on 26/11/2017.
- */
-
 public class Message {
 
     public String content;
